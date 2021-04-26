@@ -1,4 +1,6 @@
 <?php
+    $customers = $adm->getCustomers();
+
     if (isset($_GET['page']) && $_GET['page'] == 'customers'){
         require_once "customers.php";
     }

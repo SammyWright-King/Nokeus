@@ -1,3 +1,10 @@
+<?php
+    include "back/Customer.php";
+
+    $customer = new Customer();
+    $transactions = $customer->getTransactions();
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -59,50 +66,36 @@
 						
                         <div class="tab-pane fade show active" id="overview2" role="tabpanel">
 							<div class="transactions">
-								<a href="#" class="item">
-									<div class="detail">
-										<div class="icon-wrapper bg-danger" style="padding:13px;border-radius:10px" >
-										   <ion-icon name="arrow-back-outline"></ion-icon>
-										</div>
-										<div>
-											<strong> &nbsp;&nbsp; BUY </strong>
-											<p> &nbsp; &nbsp; PENDING </p>
-										</div>
-									</div>
-									<div class="right">
-										<div class="price text-danger"> $150 <br> <small> 0.14934 BTC </small> </div>
-									</div>
-								</a>
-								
-								<a href="#" class="item">
-									<div class="detail">
-										<div class="icon-wrapper bg-success" style="padding:13px;border-radius:10px" >
-										   <ion-icon name="arrow-forward-outline"></ion-icon>
-										</div>
-										<div>
-											<strong> &nbsp;&nbsp; SELL </strong>
-											<p> &nbsp; &nbsp; SUCCESSFUL </p>
-										</div>
-									</div>
-									<div class="right">
-										<div class="price text-success"> $4501 <br> <small> 3.14934 ETH </small> </div>
-									</div>
-								</a>
-								
-								<a href="#" class="item">
-									<div class="detail">
-										<div class="icon-wrapper bg-success" style="padding:13px;border-radius:10px" >
-										   <ion-icon name="arrow-forward-outline"></ion-icon>
-										</div>
-										<div>
-											<strong> &nbsp;&nbsp; SELL </strong>
-											<p> &nbsp; &nbsp; SUCCESSFUL </p>
-										</div>
-									</div>
-									<div class="right">
-										<div class="price text-success"> $2323 <br> <small> 0.24934 BTC </small> </div>
-									</div>
-								</a>
+                                <?php
+                                    if(empty($transactions)){
+                                        echo "No transactions yet";
+                                    }else {
+                                        foreach ($transactions as $transaction) {
+                                            echo "
+                                            <a href='#' class='item'>
+                                                <div class='detail'>";
+                                            if ($transaction->status == "PENDING") {
+                                                echo " <div class='icon-wrapper bg-danger' style='padding:13px;border-radius:10px'>
+                                                              <ion-icon name='arrow-back-outline'></ion-icon>
+                                                            </div>";
+                                            } elseif ($transaction->status == "SUCCESSFUL") {
+                                                echo "<div class='icon-wrapper bg-success' style='padding:13px;border-radius:10px' >
+                                                               <ion-icon name='arrow-forward-outline'></ion-icon>
+                                                            </div>";
+                                            }
+                                            echo "<div>
+                                                        <strong> &nbsp;&nbsp; BUY </strong>
+                                                        <p> &nbsp; &nbsp; $transaction->status </p>
+                                                    </div>
+                                                </div>
+                                                <div class='right'>
+                                                    <div class='price text-danger'> $150 <br> <small> $transaction->amount $transaction->network </small> </div>
+                                                </div>
+                                            </a>
+                                        ";
+                                        }
+                                    }
+                                ?>
 								
 							</div>
                         </div>

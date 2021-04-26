@@ -1,3 +1,7 @@
+<?php
+    $agents = $adm->getCustomers();
+    $agents = $adm->filterCustomerByAgent($agents);
+?>
 <div class="container-fluid pd-t-60">
     <div class="bg-white mb-2">
         <h3 class="p-2">Agents</h3>
@@ -22,23 +26,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><a href="?module=agents&page=edit_agent">Agent 1</a></td>
-                            <td>08175998874</td>
-                            <td>lkl@gmail.com</td>
+                    <?php
+                    if(empty($agents)){
+                        echo "Empty Transaction List";
+                    }else{
+                        foreach($agents as $agent){
+                            echo "
+                                <tr>
+                                    <td><a href='?module=agents&page=edit_agent_rate'>".$agent->firstname."</a></td>
+                                    <td>$agent->phone</td>
+                                    <td>$agent->email</td>
+                                </tr>
+                            ";
+                        }
+                    }
+                    ?>
+<!--                        <tr>-->
+<!--                            <td><a href="?module=agents&page=edit_agent">Agent 1</a></td>-->
+<!--                            <td>08175998874</td>-->
+<!--                            <td>lkl@gmail.com</td>-->
                             <!-- <td>BUY</td> -->
                             <!-- <td>yduhkd78diudytvghdhg</td>
                             <td>hd5hgdhtd4ghytc84ht1</td> -->
-                        </tr>
+<!--                        </tr>-->
 
-                        <tr>
-                        <td><a href="?module=agents&page=edit_agent">Agent 2</a></td>
-                            <td>09087448885</td>
-                            <td>wre@gmail.com</td>
-                            <!-- <td>SELL</td> -->
-                            <!-- <td>hjfh54rbf87ehggh521</td>
-                            <td>lpq33992y5652bggdhf</td> -->
-                        </tr>
                     </tbody>
                 </table>
                 <div class="mt-3 p-2 float-right">

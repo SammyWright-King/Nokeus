@@ -1,3 +1,5 @@
+
+
 <!--Main Content-->
 <div class="main-content px-0 app-content">
 
@@ -36,30 +38,43 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>2011/04/25</td>
-                                        <td>Nixon</td>
-                                        <td>Agent 1</td>
-                                        <td>Etherium</td>
-                                        <td>125</td>
-                                        <td>$500</td>
-                                        <td>N200000</td>
-                                        <td>Sell</td>
-                                        <td><span class="badge bg-warning">Active</scan></td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>2011/04/25</td>
-                                        <td>Ray</td>
-                                        <td>Agent 3</td>
-                                        <td>Bitcoin</td>
-                                        <td>0.67</td>
-                                        <td>$5000</td>
-                                        <td>N7200000</td>
-                                        <td>Buy</td>
-                                        <td><span class="badge bg-warning">Active</scan></td>
-                                    </tr>
+                                    <?php
+                                        if(empty($transactions)){
+                                            echo "Empty Transaction List";
+                                        }else{
+                                            foreach($transactions as $trans){
+                                                if($trans->status == "PROCESSING"){
+                                                    echo "
+                                                        <tr>
+                                                             <td>$trans->_id</td>
+                                                            <td>$trans->createdAt</td>
+                                                            <td>". $trans->customer->firstname."</td>
+                                                            <td>".$adm->getAgent($trans->agent)->firstname."</td>
+                                                            <td>$trans->network</td>
+                                                            <td>$trans->amount</td>
+                                                            <td>$500</td>
+                                                            <td>N200000</td>
+                                                            <td>Sell</td>
+                                                            <td><span class='badge bg-warning'>Active</span></td>
+                                                        </tr>
+                                                    ";
+                                                }
+
+                                            }
+                                        }
+                                    ?>
+<!--                                    <tr>-->
+<!--                                        <td>3</td>-->
+<!--                                        <td>2011/04/25</td>-->
+<!--                                        <td>Nixon</td>-->
+<!--                                        <td>Agent 1</td>-->
+<!--                                        <td>Etherium</td>-->
+<!--                                        <td>125</td>-->
+<!--                                        <td>$500</td>-->
+<!--                                        <td>N200000</td>-->
+<!--                                        <td>Sell</td>-->
+<!--                                        <td><span class="badge bg-warning">Active</span></td>-->
+<!--                                    </tr>-->
                                 </tbody>
                             </table>
                         </div>

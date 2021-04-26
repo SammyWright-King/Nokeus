@@ -47,9 +47,9 @@
                 <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                     <div class="avatar mr-1">
 <!--                        <img src="assets/images/avatar/avatar-s-1.png" alt="" srcset="">-->
-                        <img src="<?php echo $customer->profileImage ?>" alt="" srcset="">
+                        <img src="<?php echo $admin->profileImage ?>" alt="" srcset="">
                     </div>
-                    <div class="d-none d-md-block d-lg-inline-block">Hi, <?php echo $customer->firstname; ?></div>
+                    <div class="d-none d-md-block d-lg-inline-block">Hi, <?php echo $admin->firstname; ?></div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="?module=profile&page=viewprofile"><i data-feather="user"></i> Account</a>

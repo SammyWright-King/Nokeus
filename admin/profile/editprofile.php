@@ -53,7 +53,7 @@
                                                 <label class="form-label">First Name</label>
                                             </div>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control"  placeholder="firstname" value="James">
+                                                <input type="text" class="form-control"  placeholder="firstname" value="<?php echo $admin->firstname ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -64,7 +64,7 @@
                                                 <label class="form-label">Last Name</label>
                                             </div>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control"  placeholder="lastname" value="Job">
+                                                <input type="text" class="form-control"  placeholder="lastname" value="<?php echo $admin->lastname?>">
                                             </div>
                                         </div>
                                     </div>
@@ -84,7 +84,7 @@
                                     <label class="form-label">Email</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control"  placeholder="Email" value="agent1@g.com">
+                                    <input type="text" class="form-control"  placeholder="Email" value="<?php echo $admin->email ?>">
                                 </div>
                             </div>
                         </div>
@@ -94,7 +94,7 @@
                                     <label class="form-label">Phone Number</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control"  placeholder="phone number" value="08075546464">
+                                    <input type="text" class="form-control"  placeholder="phone number" value="<?php echo $admin->phone?>">
                                 </div>
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                                     <label class="form-label">Bitcoin Balance</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control"  placeholder="Bitcoin Balance" value="0.04">
+                                    <input type="text" class="form-control"  placeholder="Bitcoin Balance" value="<?php echo $admin->bitcoin_balance ?>">
                                 </div>
                             </div>
                         </div>
@@ -116,7 +116,7 @@
                                     <label class="form-label">Etherium Balance</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control"  placeholder="Etherium Balance" value="147">
+                                    <input type="text" class="form-control"  placeholder="Etherium Balance" value="<?php echo $admin->ethereum_balance?>">
                                 </div>
                             </div>
                         </div>
@@ -126,7 +126,7 @@
                                     <label class="form-label">USDT Balance</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control"  placeholder="USDT Balance" value="0.22">
+                                    <input type="text" class="form-control"  placeholder="USDT Balance" value="<?php echo $admin->tether_balance?>">
                                 </div>
                             </div>
                         </div>
@@ -216,7 +216,7 @@
                         <div class="card">
                         
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Logout</button>
+                                <button type="submit" class="btn btn-primary" onclick="location.href='./auth/logout.php'">Logout</button>
                             </div>
                         </div>
                         </div>

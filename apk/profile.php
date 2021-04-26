@@ -105,7 +105,7 @@
         <div class="listview-title mt-1">Profile Settings</div>
         <ul class="listview image-listview text inset">
             <li>
-                <a href="#" class="item">
+                <a href="username.php" class="item">
                     <div class="in">
                         <div>Change Username</div>
                     </div>
@@ -144,7 +144,7 @@
         <div class="listview-title mt-1">Security</div>
         <ul class="listview image-listview text mb-2 inset">
             <li>
-                <a href="#" class="item">
+                <a href="password_reset.php" class="item">
                     <div class="in">
                         <div>Update Password</div>
                     </div>

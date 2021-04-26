@@ -1,37 +1,3 @@
-<?php
-    session_start();
-    include "back/Connect.php";
-    if(isset($_POST['submitted'])){
-      if(isset($_POST['condition'])){
-        $arr = [
-            "email" => $_POST['email'],
-            "password" => $_POST['pwd'],
-            "firstname" => $_POST['firstname'],
-            "lastname" => $_POST['lastname'],
-            "phone" => $_POST['phone']
-        ];
-        $connect = new Connect();
-        $req = $connect->postRequest('/auth/signup', $arr);
-        $response = json_decode($req);
-        if($response->status == TRUE){
-            $_SESSION["loggedin"]=true;
-            $_SESSION['userid']  = $_POST['email'];//initiliaze session variable  to username
-            $_SESSION['last_time']=time();
-            $_SESSION['x-token'] = $response->token;
-            header("location: home.php");
-            exit();
-        }else{
-            echo"alert('wrong')";
-        }
-      }else{
-          $message = "Agree to Condition";
-      }
-
-
-    }
-?>
-
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -45,6 +11,9 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" href="assets/img/favicon.png" sizes="32x32">
     <link rel="shortcut icon" href="assets/img/favicon.png">
+    <script src='http://code.jquery.com/jquery-1.9.1.min.js'></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 </head>
 
 <body>
@@ -75,7 +44,7 @@
             <h4>Create an account</h4>
         </div>
         <div class="section mb-5 p-2">
-            <form action="#" method="post">
+            <form action="back/register_form.php" method="post" id="signup-form">
                 <div class="card">
                     <div class="card-body">
 					
@@ -160,7 +129,40 @@
     <script src="assets/js/plugins/owl-carousel/owl.carousel.min.js"></script>
     <!-- Base Js File -->
     <script src="assets/js/baseae52.js?v=5"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#signup-form").submit(function(e) {
+                if($('#customChecka1').prop('checked')){
+                    var formData = {
+                        firstname: $('#firstname').val(),
+                        lastname: $('#lastname').val(),
+                        phone: $('#phone').val(),
+                        email: $('#email').val(),
+                        pwd: $('#pwd').val()
+                    }
+                    $.ajax({
+                       cache: false,
+                       type: "POST",
+                       url: "back/register_form.php",
+                       data: formData,
+                       dataType: "json",
+                       encode: true
+                    }).done(function (data){
+                        if(data.code === 100){
+                            toastr.success("Signup Complete")
+                            location.href = "home.php"
+                        }else{
+                            toastr.warning(data.desc)
+                        }
+                    });
+                }else{
+                    toastr.warning("T&C's Not Agreed To!!!")
+                }
 
-
+                e.preventDefault();
+            });
+        });
+    </script>
 </body>
 </html>

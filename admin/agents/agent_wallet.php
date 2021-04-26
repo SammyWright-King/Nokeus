@@ -1,4 +1,7 @@
-
+<?php
+$agents = $adm->getCustomers();
+$agents = $adm->filterCustomerByAgent($agents);
+?>
 <!--Main Content-->
 <div class="main-content px-0 app-content">
 
@@ -33,16 +36,16 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                        foreach ($customers as $customer){
-                                            if(in_array('agent', $customer->roles)){
+                                        foreach ($agents as $agent){
+                                          
                                                 echo "<tr>";
-                                                echo "<td><a href=''>$customer->firstname</a></td>";
-                                                echo "<td>$customer->bitcoin_balance</td>";
-                                                echo "<td>$customer->ethereum_balance</td>";
-                                                echo "<td>$customer->tether_balance</td>";
+                                                echo "<td><a href=''>$agent->firstname</a></td>";
+                                                echo "<td>$agent->bitcoin_balance</td>";
+                                                echo "<td>$agent->ethereum_balance</td>";
+                                                echo "<td>$agent->tether_balance</td>";
                                                 echo "<td><a href='?module=agents&page=agent_withdraw' class='btn btn-sm btn-primary'>Withdraw</a></td>";
                                                 echo "</tr>";
-                                            }
+                                        
 
                                         }
                                     ?>

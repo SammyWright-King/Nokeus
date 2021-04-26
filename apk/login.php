@@ -1,29 +1,3 @@
-<?php
-    session_start();
-    include "back/Connect.php";
-    if(isset($_POST['submitted'])){
-        $arr = [
-          "email" => $_POST['email'],
-          "password" => $_POST['pwd']
-        ];
-        $connect = new Connect();
-        $req = $connect->postRequest('/auth/login', $arr);
-        $response = json_decode($req);
-        if($response->status == TRUE){
-            $_SESSION["loggedin"]=TRUE;
-            $_SESSION['userid']  = $_POST['email'];//initiliaze session variable  to username
-            $_SESSION['last_time']=time();
-            $_SESSION['x-token'] = $response->token;
-            header("location: home.php");
-            exit();
-        }else{
-            echo"alert('wrong')";
-        }
-    }
-
-?>
-
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -37,6 +11,9 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" href="assets/img/favicon.png" sizes="32x32">
     <link rel="shortcut icon" href="assets/img/favicon.png">
+    <script src='http://code.jquery.com/jquery-1.9.1.min.js'></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 </head>
 
 <body>
@@ -68,12 +45,12 @@
         </div>
         <div class="section mb-5 p-2">
 
-            <form action="#" method="post">
+            <form action="back/login_form.php" method="POST"  id="login_form">
                 <div class="card" style="border-radius: 8px 8px 0 0" >
                     <div class="card-body pb-1">
                         <div class="form-group basic">
                             <div class="input-wrapper">
-                                <input type="email" class="form-control" id="email1" placeholder="Email" name="email">
+                                <input type="email" class="form-control" id="email" placeholder="Email" name="email">
                                 <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
                             </div>
                         </div>
@@ -90,13 +67,14 @@
 
                 <div class="form-button-group transparent">
                     <button type="submit" style="border-radius: 0 0 8px 8px" class="btn btn-primary btn-block btn-lg" name="submit"> LOGIN </button>
-                    <input type="hidden" name="submitted" value="TRUE">
+<!--                    <input type="hidden" name="submitted" value="TRUE">-->
                 </div>
 
 
                 <div class="form-links mt-2" >
                     <div>
                         <a href="register.php"  >Register Now</a>
+
                     </div>
                 </div>
 
@@ -121,7 +99,37 @@
     <script src="assets/js/plugins/owl-carousel/owl.carousel.min.js"></script>
     <!-- Base Js File -->
     <script src="assets/js/baseae52.js?v=5"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#login_form").submit(function(e) {
+                var formData = {
+                    email: $("#email").val(),
+                    pwd: $("#pwd").val(),
+                };
+                $.ajax({
+                    cache: false,
+                    type: "POST",
+                    url: "back/login_form.php",
+                    data: formData,
+                    dataType: "json",
+                    encode: true,
+                }).done(function (data) {
+                    //console.log(data);
+                    if(data.code == 100){
 
+                        toastr.success(data.desc)
+                        location.href = "home.php"
+                    }else{
+                        toastr.warning(data.desc)
+                    }
+                });
+
+                e.preventDefault();
+            });
+        });
+
+    </script>
 
 </body>
 </html>

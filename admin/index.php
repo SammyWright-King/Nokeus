@@ -1,5 +1,8 @@
 <?php
     include "connect/Admin.php";
+    $adm = new Admin();
+    $admin = $adm->getCustomer()->data;
+
 ?>
 
 <!DOCTYPE html>

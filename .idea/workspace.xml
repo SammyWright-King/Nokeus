@@ -1,7 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="bfe1e4c0-1765-4bf5-b86e-4e80a9b2becf" name="Default Changelist" comment="" />
+    <list default="true" id="bfe1e4c0-1765-4bf5-b86e-4e80a9b2becf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/admin/connect/login.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/connect/withdraw.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apk/back/login_form.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apk/back/register_form.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apk/password_reset.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/agents/agent_wallet.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/agents/agent_wallet.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/agents/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/agents/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/agents/manage_agent.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/agents/manage_agent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/agents/view_rates.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/agents/view_rates.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/auth/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/auth/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/connect/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/connect/Admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/connect/Session.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/connect/Session.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/customers/customers.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/customers/customers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/customers/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/customers/edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/customers/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/customers/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/includes/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/profile/editprofile.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/profile/editprofile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/profile/viewprofile.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/profile/viewprofile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/transactions/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/transactions/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/transactions/transaction_active.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/transactions/transaction_active.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/transactions/transaction_declined.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/transactions/transaction_declined.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/transactions/transaction_success.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/transactions/transaction_success.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apk/activity.php" beforeDir="false" afterPath="$PROJECT_DIR$/apk/activity.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apk/back/Customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/apk/back/Customer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apk/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/apk/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apk/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/apk/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apk/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/apk/profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apk/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/apk/register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apk/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/apk/test.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apk/wallet.php" beforeDir="false" afterPath="$PROJECT_DIR$/apk/wallet.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +68,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1qzqdsUaOB7TDPCme44f54FFweB" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -29,16 +83,16 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\SmartTeller\nokeus\admin\auth\assets\js" />
-      <recent name="C:\xampp\htdocs\SmartTeller\nokeus\admin\auth\assets\css" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\SmartTeller\nokeus\apk\back" />
+      <recent name="C:\xampp\htdocs\SmartTeller\nokeus\apk" />
       <recent name="C:\xampp\htdocs\SmartTeller\nokeus\admin\auth" />
       <recent name="C:\xampp\htdocs\SmartTeller\nokeus\admin\assets\css" />
       <recent name="C:\xampp\htdocs\SmartTeller\nokeus\admin\assets" />
-      <recent name="C:\xampp\htdocs\SmartTeller\nokeus\admin" />
-      <recent name="C:\xampp\htdocs\SmartTeller\nokeus\auth\signup" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\SmartTeller\nokeus\admin\auth\assets\js" />
+      <recent name="C:\xampp\htdocs\SmartTeller\nokeus\admin\auth\assets\css" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -51,25 +105,37 @@
       <updated>1618092856366</updated>
       <workItem from="1618092857571" duration="51525000" />
       <workItem from="1618908809942" duration="593000" />
-      <workItem from="1618910624989" duration="14523000" />
+      <workItem from="1618910624989" duration="15476000" />
+      <workItem from="1619287804828" duration="45797000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1618519571920">
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1619320125593">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618519571920" />
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619320125593" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1618332044421">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1618332044421" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1619152818857">
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1619371454487">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619152818857" />
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619371454487" />
   </component>
 </project>

@@ -1,4 +1,6 @@
 <?php
+    $rates = $adm->getRates();
+    
     if (isset($_GET['page']) && $_GET['page'] == 'add_agent'){
         require_once "add_agent.php";
     }

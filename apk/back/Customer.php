@@ -1,18 +1,47 @@
 <?php
-include "back/Connect.php";
-include "back/Session.php";
+include "Connect.php";
+include "Session.php";
 
-$connect = new Connect();
+class Customer{
+    public $connect;
+    function __construct(){
+        $connect = new Connect();
+        $this->connect = $connect;
+    }
 
-$customer = $connect->getRequest("/auth",NULL, $_SESSION['x-token']);
-$customer =json_decode($customer);
+    function getCustomer(){
+        $customer = $this->connect->getRequest("/auth",NULL, $_SESSION['x-token']);
+        return json_decode($customer);
+    }
 
-$params = [
-    "id"=> $customer->data->_id,
-    "agentId" => $customer->data->_id
-];
-$rates = $connect->getRequest("/rates", $params, $_SESSION['x-token']);
-$rates = json_decode($rates);
-$rates = $rates->data;
+    function getAgent($id){
+        $form = ['id' => $id];
+        $customers = $this->connect->getRequest("/customers",$form, $_SESSION['x-token']);
+        $customers = json_decode($customers);
+        $customers = $customers->data;
+
+        return $customers[0];
+    }
+
+    function getRates(){
+        $rates = $this->connect->getRequest("/rates", NULL, $_SESSION['x-token']);
+        $rates = json_decode($rates);
+        return $rates->data;
+    }
+
+    function getTransactions(){
+        $trans = $this->connect->getRequest('/transactions', NULL, $_SESSION['x-token']);
+        $transactions = json_decode($trans);
+        $trans = [];
+        if(isset($transactions->data)){
+            $trans = $transactions->data;
+        }
+        return $trans;
+    }
+
+}
+
+
+
 
 

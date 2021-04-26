@@ -1,5 +1,9 @@
 <?php
     include "back/Customer.php";
+
+    $customer = new Customer();
+    $customer = $customer->getCustomer();
+
 ?>
 
 <!doctype html>

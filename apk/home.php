@@ -1,5 +1,10 @@
 <?php
     include "back/Customer.php";
+
+    $customer = new Customer();
+    $rates = $customer->getRates();
+    $id=NULL;
+    if(isset($_GET['id'])) $id = $_GET['id'];
 ?>
 
 <!doctype html>
@@ -56,7 +61,7 @@
 
                 <div class="wallet-footer">
                     <div class="item" style="margin-right:5px" >
-                        <select style="font-size:13pt;color:#fff;padding:10px;width:100%;border-radius: 5px;border:none;box-shadow: 1px 1px 10px #D3D3D3" class="bg-info currency" >
+                        <select style="font-size:13pt;color:#fff;padding:10px;width:100%;border-radius: 5px;border:none;box-shadow: 1px 1px 10px #D3D3D3" class="bg-info currency" id="currency">
 								<option> Bitcoin </option>
 								<option> Ethereum </option>
 								<option> RMB </option>
@@ -76,22 +81,58 @@
 
             <div class="transactions">
                 <?php
-                    foreach ($rates as $rate){
-                        echo'
+                    if(empty($rates)){
+                        echo "No Rates Available";
+                    }else {
+                        foreach ($rates as $rate) {
+                            if (strcasecmp($id, "ethereum") == 0) {
+                                echo '
                              <a href="#" class="item" style="border-radius:0px 0px 8px 8px" data-toggle="modal" data-target="#buy" >
-                    <div class="detail">
-                        <div>
-                            <strong> &nbsp;&nbsp; BUY </strong>
-							<p> &nbsp; &nbsp; Min: 0.01 BTC </p>
-							<p class="text-success" > &nbsp; &nbsp; Agent 1 </p>
-                        </div>
-                    </div>
-                    <div class="right">
-                        <div class="price text-default">'.$rate->bitcoin_rate.'  NGN/BTC <br> <small> GTBank </small> </div>
-                    </div>
-                    <div class="icon-wrapper bg-success" style="padding:5px;border-radius:5px;font-size:9pt" > BUY </div>
-                </a>
-                        ';
+                                <div class="detail">
+                                    <div>
+                                        <strong> &nbsp;&nbsp; BUY </strong>
+                                        <p> &nbsp; &nbsp; Min: 0.01 ETH </p>
+                                        <p class="text-success" > &nbsp; &nbsp;' . $customer->getAgent($rate->agent)->firstname . '</p>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    <div class="price text-default">' . $rate->ethereum_rate . '  NGN/BTC <br> <small> GTBank </small> </div>
+                                </div>
+                                <div class="icon-wrapper bg-success" style="padding:5px;border-radius:5px;font-size:9pt" > BUY </div>
+                            </a>';
+                            } elseif (strcasecmp($id, 'usdt') == 0) {
+                                echo '
+                             <a href="#" class="item" style="border-radius:0px 0px 8px 8px" data-toggle="modal" data-target="#buy" >
+                                <div class="detail">
+                                    <div>
+                                        <strong> &nbsp;&nbsp; BUY </strong>
+                                        <p> &nbsp; &nbsp; Min: 0.01 USDT </p>
+                                        <p class="text-success" > &nbsp; &nbsp;' . $customer->getAgent($rate->agent)->firstname . '</p>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    <div class="price text-default">' . $rate->tether_rate . '  NGN/BTC <br> <small> GTBank </small> </div>
+                                </div>
+                                <div class="icon-wrapper bg-success" style="padding:5px;border-radius:5px;font-size:9pt" > BUY </div>
+                            </a>';
+                            } else {
+                                echo '
+                             <a href="#" class="item" style="border-radius:0px 0px 8px 8px" data-toggle="modal" data-target="#buy" >
+                                <div class="detail">
+                                    <div>
+                                        <strong> &nbsp;&nbsp; BUY </strong>
+                                        <p> &nbsp; &nbsp; Min: 0.01 BTC </p>
+                                        <p class="text-success" > &nbsp; &nbsp;' . $customer->getAgent($rate->agent)->firstname . '</p>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    <div class="price text-default">' . $rate->bitcoin_rate . '  NGN/BTC <br> <small> GTBank </small> </div>
+                                </div>
+                                <div class="icon-wrapper bg-success" style="padding:5px;border-radius:5px;font-size:9pt" > BUY </div>
+                            </a>
+                                    ';
+                            }
+                        }
                     }
 
                 ?>
@@ -268,6 +309,22 @@
     <script src="assets/js/plugins/owl-carousel/owl.carousel.min.js"></script>
     <script src="assets/js/baseae52.js?v=5"></script>
 	<script src="assets/js/custom.js?v=2"></script>
+    <script>
+        $(document).ready(function (){
+            $('#currency').change(function (){
+                url = new URL(location.href)
+                urlParams = url.searchParams;
+
+                if(urlParams.has('id')){
+                    urlParams.set('id', $(this).val())
+                    location.href = url.toString()
+                }else{
+                    urlParams.append('id', $(this).val())
+                    location.href = url.toString()
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>

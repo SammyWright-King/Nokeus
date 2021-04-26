@@ -1,8 +1,6 @@
 <?php
     $id = $_GET['id'];
-    $customer = $connect->getRequest('/customers?id='.$id, NULL, $_SESSION['x-token']);
-    $customer = json_decode($customer);
-    $customer = $customer->data[0];
+    $customer = $adm->getAgent($id);
 ?>
 
 <!--Main Content-->

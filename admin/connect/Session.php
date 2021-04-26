@@ -7,7 +7,7 @@ if (!isset($_SESSION['loggedIn'])){
     session_regenerate_id();
     $_SESSION['loggedIn'] = FALSE;
 }
-if(!isset($_SESSION['x-token'])){
+if(!isset($_SESSION['x-admin-token'])){
     redirect();
 }
 if (time()- $_SESSION['last_time'] > 1800){

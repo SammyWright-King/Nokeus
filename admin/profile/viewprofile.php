@@ -23,7 +23,7 @@
                         <img src="https://profile.freepik.com/accounts/avatar/default_07.png?1555671037" alt="element 02"
                             class="mb-1">
 <!--                        <h3 class="card-title">James Job</h3>-->
-                        <h3 class="card-title"><?php echo $customer->firstname. " ". $customer->lastname; ?></h3>
+                        <h3 class="card-title"><?php echo $admin->firstname. " ". $admin->lastname; ?></h3>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="col-md-9">
 <!--                                    <input type="text" class="form-control"  placeholder="Bitcoin Balance" value="">-->
-                                    <input type="text" class="form-control" placeholder="Bitcoin Balance"  value="<?php echo $customer->bitcoin_balance; ?>">
+                                    <input type="text" class="form-control" placeholder="Bitcoin Balance"  value="<?php echo $admin->bitcoin_balance; ?>">
                                 </div>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="col-md-9">
 <!--                                    <input type="text" class="form-control"  placeholder="Etherium Balance" value="">-->
-                                    <input type="text" class="form-control"  placeholder="Bitcoin Balance" value="<?php echo $customer->ethereum_balance; ?>">
+                                    <input type="text" class="form-control"  placeholder="Bitcoin Balance" value="<?php echo $admin->ethereum_balance; ?>">
                                 </div>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="col-md-9">
 <!--                                    <input type="text" class="form-control"  placeholder="USDT Balance" value="">-->
-                                    <input type="text" class="form-control"  placeholder="Bitcoin Balance" value="<?php echo $customer->tether_balance; ?>">
+                                    <input type="text" class="form-control"  placeholder="Bitcoin Balance" value="<?php echo $admin->tether_balance; ?>">
                                 </div>
                             </div>
                         </div>
@@ -123,7 +123,7 @@
                                 </div>
                                 <div class="col-md-9">
 <!--                                    <input type="text" class="form-control"  placeholder="firstname" value="">-->
-                                    <input type="text" class="form-control"  placeholder="firstname" value="<?php echo $customer->firstname; ?>">
+                                    <input type="text" class="form-control"  placeholder="firstname" value="<?php echo $admin->firstname; ?>">
                                 </div>
                             </div>
                         </div>
@@ -135,7 +135,7 @@
                                 </div>
                                 <div class="col-md-9">
 <!--                                    <input type="text" class="form-control"  placeholder="lastname" value="">-->
-                                    <input type="text" class="form-control"  placeholder="firstname" value="<?php echo $customer->lastname; ?>">
+                                    <input type="text" class="form-control"  placeholder="firstname" value="<?php echo $admin->lastname; ?>">
                                 </div>
                             </div>
                         </div>
@@ -157,7 +157,7 @@
                                 </div>
                                 <div class="col-md-9">
 <!--                                    <input type="text" class="form-control"  placeholder="Email" value="">-->
-                                    <input type="text" class="form-control"  placeholder="firstname" value="<?php echo $customer->email; ?>">
+                                    <input type="text" class="form-control"  placeholder="firstname" value="<?php echo $admin->email; ?>">
                                 </div>
                             </div>
                         </div>
@@ -168,7 +168,7 @@
                                 </div>
                                 <div class="col-md-9">
 <!--                                    <input type="text" class="form-control"  placeholder="phone number" value="">-->
-                                    <input type="text" class="form-control"  placeholder="firstname" value="<?php echo $customer->phone; ?>">
+                                    <input type="text" class="form-control"  placeholder="firstname" value="<?php echo $admin->phone; ?>">
                                 </div>
                             </div>
                         </div>

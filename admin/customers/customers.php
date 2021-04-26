@@ -34,8 +34,8 @@
                                     echo "<td>$customer->bitcoin_balance</td>";
                                     echo "<td>$customer->ethereum_balance</td>";
                                     echo "<td>$customer->tether_balance</td>";
-                                    echo "<td>$customer->bitcoin_public_key</td>";
-                                    echo "<td>$customer->ethereum_public_key</td>";
+                                    echo "<td>$customer->bitcoin_address</td>";
+                                    echo "<td>$customer->ethereum_address</td>";
                                 echo "</tr>";
                             }
                         ?>
