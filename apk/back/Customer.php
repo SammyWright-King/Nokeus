@@ -39,6 +39,17 @@ class Customer{
         return $trans;
     }
 
+    function getBitcoinRate(){
+        $btc = $this->connect->accessURL('https://api.coinbase.com/v2/prices/BTC-USD/buy');
+        $btc = json_decode($btc);
+        return $btc->data->amount;
+    }
+
+    function getEthereumRate(){
+        $eth = $this->connect->accessURL('https://api.coinbase.com/v2/prices/ETH-USD/buy');
+        $eth = json_decode($eth);
+        return $eth->data->amount;
+    }
 }
 
 

@@ -21,6 +21,13 @@ class Admin{
         return $transaction->data;
     }
 
+
+    function getTransaction($id){
+        $trans = $this->connect->getRequest("/transactions/".$id,NULL, $_SESSION['x-admin-token']);
+        $transaction = json_decode($trans);
+        return $transaction->data;
+    }
+
     function getCustomers(){
         $customers = $this->connect->getRequest("/customers",NULL, $_SESSION['x-admin-token']);
         $customers = json_decode($customers);
@@ -50,23 +57,19 @@ class Admin{
         }
         return $matches;
     }
+
+    function getBitcoinRate($cur){
+        $btc = $this->connect->accessURL('https://api.coinbase.com/v2/prices/BTC-'.$cur.'/buy');
+        $btc = json_decode($btc);
+        return $btc->data->amount;
+    }
+
+    function getEthereumRate($cur){
+        $eth = $this->connect->accessURL('https://api.coinbase.com/v2/prices/ETH-'.$cur.'/buy');
+        $eth = json_decode($eth);
+        return $eth->data->amount;
+    }
 }
 
 
-//$connect = new Connector();
-//
-//$customer = $connect->getRequest("/auth",NULL, $_SESSION['x-token']);
-//$customer =json_decode($customer);
-//$customer = $customer->data;
-//
-//$params = [
-//    "id"=> $customer->_id,
-//    "agentId" => $customer->_id
-//];
-//$rates = $connect->getRequest("/rates/filter", $params, $_SESSION['x-token']);
-//$rates = json_decode($rates);
-//
-//$customers = $connect->getRequest('/customers', NULL, $_SESSION['x-token']);
-//$customers = json_decode($customers);
-//$customers = $customers->data;
 

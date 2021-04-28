@@ -10,6 +10,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title> Activity </title>
     <link rel="stylesheet" href="assets/css/styleae52.css?v=5">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
@@ -79,6 +80,10 @@
                                                               <ion-icon name='arrow-back-outline'></ion-icon>
                                                             </div>";
                                             } elseif ($transaction->status == "SUCCESSFUL") {
+                                                echo "<div class='icon-wrapper bg-success' style='padding:13px;border-radius:10px' >
+                                                               <ion-icon name='arrow-forward-outline'></ion-icon>
+                                                            </div>";
+                                            } else{
                                                 echo "<div class='icon-wrapper bg-success' style='padding:13px;border-radius:10px' >
                                                                <ion-icon name='arrow-forward-outline'></ion-icon>
                                                             </div>";

@@ -1,9 +1,14 @@
 <?php
     include "back/Customer.php";
 
-    $customer = new Customer();
-    $customer = $customer->getCustomer();
+    $cust = new Customer();
+    $customer = $cust->getCustomer();
 
+    $btc = $cust->getBitcoinRate();
+    $eth = $cust->getEthereumRate();
+    $usdt = 0.99;
+
+    $total = ($customer->data->bitcoin_balance * $btc) + ($customer->data->ethereum_balance * $eth);
 ?>
 
 <!doctype html>
@@ -11,6 +16,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title> Nokuex </title>
     <link rel="stylesheet" href="assets/css/styleae52.css?v=1">
     <meta name="viewport"
@@ -53,7 +59,8 @@
                 <div class="balance">
                     <div class="left">
                         <span class="title">Total Balance</span>
-                        <h1 class="total">$ 2,562.50</h1>
+<!--                        <h1 class="total">$ 2,562.50</h1>-->
+                        <h1 class="total">$ <?php echo $total?></h1>
                     </div>
                     <div class="right">
                         <a href="#" class="button" data-toggle="modal" data-target="#deposit">

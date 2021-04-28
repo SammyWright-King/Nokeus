@@ -49,14 +49,16 @@
                 <div class="col-6">
                     <div class="stat-box">
                         <div class="title">Bitcoin</div>
-                        <div class="value text-success">$ 552.95</div>
+<!--                        <div class="value text-success">$ 552.95</div>-->
+                        <div class="value text-success">$ <?php echo $customer->data->bitcoin_balance * $btc?></div>
 						<strong style="text-align:center" > <?php echo $customer->data->bitcoin_balance;?> BTC </strong>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="stat-box">
                         <div class="title">Ethereum</div>
-                        <div class="value text-danger">$ 86.45</div>
+<!--                        <div class="value text-danger">$ 86.45</div>-->
+                        <div class="value">$ <?php echo $customer->data->ethereum_balance * $eth?></div>
 						<strong style="text-align:center" > <?php echo $customer->data->ethereum_balance;?> ETH </strong>
                     </div>
                 </div>
@@ -72,7 +74,8 @@
                 <div class="col-6">
                     <div class="stat-box">
                         <div class="title">USDT</div>
-                        <div class="value">$ <?php echo $customer->data->tether_balance;?></div>
+                        <div class="value">$ <?php echo $customer->data->tether_balance * $usdt?></div>
+<!--                        <div class="value">$ --><?php //echo $customer->data->tether_balance;?><!--</div>-->
 						<br>
                     </div>
                 </div>

@@ -2,17 +2,37 @@
 
 include "back/Connect.php";
 
-
 $connect = new Connect();
-$req = $connect->makeRequest('', "GET");
-echo $req."\n";
 
 $arr = array(
     "email" => "php.guy@development.com",
     "password" => "123456"
 );
 $req= $connect->postRequest('/auth/login',  $arr);
-var_dump($req);
+$res = json_decode($req);
+//var_dump($req);
+
+$btc = $connect->accessURL('https://api.coinbase.com/v2/prices/BTC-USD/buy');
+$btc = json_decode($btc);
+
+echo $btc->data->amount."\n";
+echo $btc->data->amount * 2;
+
+$params = array(
+    "account_name"=> "donald",
+    "account_number" => '1234567890',
+    "bank_name" => 'uba'
+);
+
+
+$update = $connect->put('/customers', $params, $res->token);
+var_dump($update);
+
+$id = '60761706f7089f00170efe60';
+$complete = $connect->put('/transactions/'.$id.'/complete', NULL, $res->token);
+//var_dump($complete);
+$complete = json_decode($complete);
+echo $complete->status;
 
 //$res = json_decode($req);
 ////print_r($res);

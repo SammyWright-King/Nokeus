@@ -1,3 +1,10 @@
+<?php
+    $admin = $adm->getCustomer();
+    $btc = $adm->getBitcoinRate('USD');
+    $eth = $adm->getEthereumRate('USD');
+    $usdt = 0.99;
+?>
+
 <div class="main-content container-fluid">
     <div class="page-title">
         <h3>Dashboard</h3>
@@ -12,7 +19,8 @@
                             <div class='px-3 py-3 d-flex justify-content-between'>
                                 <h3 class='card-title'>bitcoin balance</h3>
                                 <div class="card-right d-flex align-items-center">
-                                    <p>$50 </p>
+<!--                                    <p>$50 </p>-->
+                                    <p>$ <?php echo $admin->data->bitcoin_balance * $btc?></p>
                                 </div>
                             </div>
                             <div class="chart-wrapper">
@@ -29,7 +37,8 @@
                             <div class='px-3 py-3 d-flex justify-content-between'>
                                 <h3 class='card-title'>ethereum balance</h3>
                                 <div class="card-right d-flex align-items-center">
-                                    <p>$532,2 </p>
+<!--                                    <p>$532,2 </p>-->
+                                    <p><?php echo $admin->data->ethereum_balance * $eth?></p>
                                 </div>
                             </div>
                             <div class="chart-wrapper">
@@ -46,7 +55,8 @@
                             <div class='px-3 py-3 d-flex justify-content-between'>
                                 <h3 class='card-title'>usdt balance</h3>
                                 <div class="card-right d-flex align-items-center">
-                                    <p>1,544 </p>
+<!--                                    <p>1,544 </p>-->
+                                    <p>$ <?php echo $admin->data->tether_balance * $usdt?></p>
                                 </div>
                             </div>
                             <div class="chart-wrapper">

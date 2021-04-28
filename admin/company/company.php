@@ -12,7 +12,8 @@
                             <div class='px-3 py-3 d-flex justify-content-between'>
                                 <h3 class='card-title'>BITCOIN BALANCE</h3>
                                 <div class="card-right d-flex align-items-center">
-                                    <p>$50 </p>
+<!--                                    <p>$50 </p>-->
+                                    <p>$ <?php echo $admin->data->bitcoin_balance * $btc?></p>
                                 </div>
                             </div>
                             <div class="chart-wrapper">
@@ -29,7 +30,8 @@
                             <div class='px-3 py-3 d-flex justify-content-between'>
                                 <h3 class='card-title'>Etherium balance</h3>
                                 <div class="card-right d-flex align-items-center">
-                                    <p>$532,2 </p>
+<!--                                    <p>$532,2 </p>-->
+                                    <p>$ <?php echo $admin->data->ethereum_balance * $eth?></p>
                                 </div>
                             </div>
                             <div class="chart-wrapper">
@@ -46,7 +48,8 @@
                             <div class='px-3 py-3 d-flex justify-content-between'>
                                 <h3 class='card-title'>USDT balance</h3>
                                 <div class="card-right d-flex align-items-center">
-                                    <p>1,544 </p>
+<!--                                    <p>1,544 </p>-->
+                                    <p>$ <?php echo $admin->data->tether_balance * $usdt?></p>
                                 </div>
                             </div>
                             <div class="chart-wrapper">

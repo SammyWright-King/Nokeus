@@ -8,6 +8,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title> Profile </title>
     <link rel="stylesheet" href="assets/css/styleae52.css?v=5">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
@@ -105,7 +106,7 @@
         <div class="listview-title mt-1">Profile Settings</div>
         <ul class="listview image-listview text inset">
             <li>
-                <a href="username.php" class="item">
+                <a href="#" class="item">
                     <div class="in">
                         <div>Change Username</div>
                     </div>
@@ -144,7 +145,7 @@
         <div class="listview-title mt-1">Security</div>
         <ul class="listview image-listview text mb-2 inset">
             <li>
-                <a href="password_reset.php" class="item">
+                <a href="#" class="item">
                     <div class="in">
                         <div>Update Password</div>
                     </div>

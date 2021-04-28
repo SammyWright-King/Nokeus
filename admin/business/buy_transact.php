@@ -1,3 +1,10 @@
+<?php
+    $id = $_GET['id'];
+    $transaction = $adm->getTransaction($id);
+
+    $customer = $adm->getCustomer();
+?>
+
 <!--Main Content-->
 <div class="main-content px-0 app-content">
 
@@ -31,11 +38,14 @@
                             <label class="form-label">Product</label>
                         </div>
                         <div class="col-md-9">
+                            <?php
+                                $ntwk = $transaction->network;
+                            ?>
                             <select class="form-select" id="basicSelect" value="">
                                 <option>Select an option</option>
-                                <option>Bitcoin</option>
-                                <option>Etherium</option>
-                                <option>USDT</option>
+                                <option <?php if($ntwk == "BTC") echo 'selected' ?>>Bitcoin</option>
+                                <option <?php if($ntwk == "ETH") echo 'selected' ?>>Etherium</option>
+                                <option <?php if($ntwk == "USDT") echo 'selected' ?>>USDT</option>
                             </select>
                         </div>
                     </div>
@@ -46,7 +56,7 @@
                         <label class="form-label">Trade ID</label>
                     </div>
                     <div class="col-md-9">
-                        <input type="text" class="form-control"  placeholder="payment id" value="1" readonly>
+                        <input type="text" class="form-control"  placeholder="payment id" value="<?php echo $transaction->_id?>" readonly>
                     </div>
                 </div>
             </div>
@@ -56,7 +66,7 @@
                         <label class="form-label">Amount(product)</label>
                     </div>
                     <div class="col-md-9">
-                        <input type="text" class="form-control"  placeholder="Amount(product)" value="0.067" readonly>
+                        <input type="text" class="form-control"  placeholder="Amount(product)" value="<?php echo $transaction->amount?>" readonly>
                     </div>
                 </div>
             </div>
@@ -66,7 +76,14 @@
                         <label class="form-label">Amount(productUSD)</label>
                     </div>
                     <div class="col-md-9">
-                        <input type="text" class="form-control"  placeholder="Amount(productUSD)" value="$200" readonly>
+                        <?php
+                            if($transaction->network == "BTC"){
+                                $value = $btc_usd * $transaction->amount;
+                            }elseif ($transaction->network == "ETH"){
+                                $value = $eth_usd * $transaction->amount;
+                            }
+                        ?>
+                        <input type="text" class="form-control"  placeholder="Amount(productUSD)" value="$ <?php echo $value ?>" readonly>
                     </div>
                 </div>
             </div>
@@ -76,7 +93,14 @@
                         <label class="form-label">Amount(productNGN)</label>
                     </div>
                     <div class="col-md-9">
-                        <input type="text" class="form-control"  placeholder="Amount(productNGN)" value="N200000" readonly>
+                        <?php
+                            if($transaction->network == "BTC"){
+                                $value = $btc_ng * $transaction->amount;
+                            }elseif ($transaction->network == "ETH"){
+                                $value = $eth_ng * $transaction->amount;
+                            }
+                        ?>
+                        <input type="text" class="form-control"  placeholder="Amount(productNGN)" value="N <?php echo $value?>" readonly>
                     </div>
                 </div>
             </div>
@@ -87,7 +111,7 @@
                         <label class="form-label">Bitcoin Address</label>
                     </div>
                     <div class="col-md-9">
-                        <input type="text" class="form-control"  placeholder="bitcoin address" value="jhg65tdgfy5r65gtyr" readonly>
+                        <input type="text" class="form-control"  placeholder="bitcoin address" value="<?php echo $transaction->destination_address?>" readonly>
                     </div>
                 </div>
             </div>
@@ -111,7 +135,7 @@
                         <label class="form-label">Bitcoin Address</label>
                     </div>
                     <div class="col-md-9">
-                        <input type="text" class="form-control"  placeholder="Bitcoin Address" value="gsy45shhfytts5w" readonly>
+                        <input type="text" class="form-control"  placeholder="Bitcoin Address" value="<?php echo $customer->data->bitcoin_address?>" readonly>
                     </div>
                 </div>
             </div>
@@ -121,7 +145,7 @@
                         <label class="form-label">Etherium Address</label>
                     </div>
                     <div class="col-md-9">
-                        <input type="text" class="form-control"  placeholder="eth address" value="jgw544hwg224gfs" readonly>
+                        <input type="text" class="form-control"  placeholder="eth address" value="<?php echo $customer->data->ethereum_address?>" readonly>
                     </div>
                 </div>
             </div>
@@ -131,7 +155,7 @@
                         <label class="form-label">USDT Address</label>
                     </div>
                     <div class="col-md-9">
-                        <input type="text" class="form-control"  placeholder="usdt address" value="hytfwtfyw64635653" readonly>
+                        <input type="text" class="form-control"  placeholder="usdt address" value="<?php echo $customer->data->tether_address?>" readonly>
                     </div>
                 </div>
             </div>
@@ -147,7 +171,9 @@
                                         <input type="file" class="form-control"  placeholder="enter proof" value="">
                                     </div>
                                     <div class="mt-3">
-                                        <a href="?module=business&page=buy" type="submit" class="btn btn-primary waves-effect waves-light">Complete Transaction</a>
+                                        <input type="hidden" id="text_id" value="<?php echo $id?>">
+<!--                                        ?module=business&page=buy-->
+                                        <a href="#" type="button" class="btn btn-primary waves-effect waves-light" id="btn-buy-complete">Complete Transaction</a>
                                     </div>
                                 </div>
                             </div>
@@ -173,3 +199,33 @@
 </div>
 </div>
 <!--Main Content-->
+<script>
+    $(document).ready(function() {
+        $("#btn-buy-complete").click(function() {
+            var id = $('#text_id').val()
+
+            var formData = {
+               trans_id: id,
+            }
+            $.ajax({
+               cache: false,
+               type: "POST",
+               url: "../admin/connect/complete_transaction.php",
+               data: formData,
+               dataType: "json",
+               encode: true,
+            }).done(function (data) {
+
+               //console.log(data);
+               if(data.code == 100){
+                   toastr.success(data.desc)
+                   location.reload()
+               }else{
+                   toastr.warning(data.desc)
+               }
+            }).fail(function (){
+               alert('failed')
+            });
+        });
+    });
+</script>

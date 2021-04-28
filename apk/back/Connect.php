@@ -125,5 +125,54 @@ class Connect{
         return $output;
     }
 
+    /**
+     * @param $url
+     * @param null $param
+     * @param null $token
+     * @return bool|string
+     */
+    public function accessURL($url){
+        $url = $url;
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+
+        $output=curl_exec($ch);
+
+        curl_close($ch);
+        return $output;
+    }
+
+    /**
+     * @param $url
+     * @param $method
+     * @param null $param
+     * @param null $token
+     * @return bool|string
+     */
+    public function put($url, $param=NULL, $token=NULL){
+        $url = $this->baseUrl.$url;
+
+        $cURLConnection = curl_init();
+        curl_setopt($cURLConnection, CURLOPT_URL, $url);
+        if(isset($param)){
+            curl_setopt($cURLConnection, CURLOPT_POSTFIELDS,json_encode($param));
+        }
+        curl_setopt($cURLConnection, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($cURLConnection, CURLOPT_CUSTOMREQUEST, "PUT");
+        curl_setopt($cURLConnection, CURLOPT_HTTPHEADER, array(
+            "Content-Type: application/json",
+            "x-access-token: ". $token
+        ));
+        curl_setopt($cURLConnection, CURLOPT_RETURNTRANSFER, true);
+        $output=curl_exec($cURLConnection);
+
+        curl_close($cURLConnection);
+        return $output;
+    }
 
 }

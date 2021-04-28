@@ -35,28 +35,51 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>2011/04/25</td>
-                                <td>Nixon</td>
-                                <td>Bitcoin</td>
-                                <td>0.01</td>
-                                <td>$200</td>
-                                <td>N200000</td>
-                                <td><a href="?module=business&page=sell_transact" class="badge bg-success">Process</a></td>
-                                <td><a href="#" class="btn btn-sm btn-danger">Decline</a></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>2011/07/25</td>
-                                <td>Winters</td>
-                                <td>Etherium</td>
-                                <td>0.01</td>
-                                <td>$200</td>
-                                <td>N200000</td>
-                                <td><a href="?module=business&page=sell_transact" class="badge bg-success">Process</a></td>
-                                <td><a href="#" class="btn-sm btn-danger">Decline</a></td>
-                            </tr>
+                            <?php
+                                if(empty($transactions)){
+                                    echo "Empty Transaction List";
+                                }else{
+                                    foreach($transactions as $trans){
+                                        if($trans->type == "SELL"){
+
+                                            echo "<tr>";
+                                            echo "<td>$trans->_id</td>";
+                                            echo "<td>$trans->createdAt</td>";
+                                            echo "<td>". $trans->customer->firstname."</td>";
+                                            echo "<td>$trans->network</td>";
+                                            echo "<td>$trans->amount</td>";
+                                            if($trans->network == "ETH"){
+                                                $usd_value = $eth_usd * $trans->amount;
+                                                echo "<td>$usd_value</td>";
+                                                $ng_value = $eth_ng * $trans->amount;
+                                                echo "<td>$ng_value</td>";
+                                            }elseif ($trans->network == "BTC"){
+                                                $usd_value = $btc_usd * $trans->amount;
+                                                echo "<td>$usd_value</td>";
+                                                $ng_value = $btc_ngn * $trans->amount;
+                                                echo "<td>$ng_value</td>";
+                                            }
+                                            echo "<td><a href='?module=business&page=sell_transact&id=$trans->_id' class='badge bg-success'>$trans->status</a></td>";
+                                            echo "<td><a href='#' class='btn btn-sm btn-danger'>Decline</a></td>";
+                                            echo "</tr>";
+
+                                        }
+
+                                    }
+                                }
+                            ?>
+<!--                            <tr>-->
+<!--                                <td>1</td>-->
+<!--                                <td>2011/04/25</td>-->
+<!--                                <td>Nixon</td>-->
+<!--                                <td>Bitcoin</td>-->
+<!--                                <td>0.01</td>-->
+<!--                                <td>$200</td>-->
+<!--                                <td>N200000</td>-->
+<!--                                <td><a href="?module=business&page=sell_transact" class="badge bg-success">Process</a></td>-->
+<!--                                <td><a href="#" class="btn btn-sm btn-danger">Decline</a></td>-->
+<!--                            </tr>-->
+
                         </tbody>
                             </table>
                         </div>

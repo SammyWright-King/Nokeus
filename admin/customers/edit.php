@@ -1,6 +1,7 @@
 <?php
     $id = $_GET['id'];
     $customer = $adm->getAgent($id);
+
 ?>
 
 <!--Main Content-->
@@ -35,7 +36,7 @@
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-body">
-                    <form>
+                    <form action="../admin/connect/update.php" method="POST" class="edit-form-2">
                         <div class="mb-4">Personal Information</div>
                         
                         <div class="form-group ">
@@ -88,18 +89,18 @@
                                     <label class="form-label">Phone Number</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control"  placeholder="phone number" value="<?php $customer->phone?>">
+                                    <input type="text" class="form-control"  placeholder="phone number" value="<?php echo $customer->phone?>">
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3">
                                     <label class="form-label">Profile Picture</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="file" class="form-control"  placeholder="profile picture" value="<?php $customer->profileImage?>">
+                                    <input type="file" class="form-control"  placeholder="profile picture" value="<?php echo $customer->profileImage?>">
                                 </div>
                             </div>
                         </div>
@@ -154,7 +155,7 @@
                                     <label class="form-label">Account Name</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control"  placeholder="Account Name" value="Garret Gleep">
+                                    <input type="text" class="form-control"  placeholder="Account Name" value="" id="account-name">
                                 </div>
                             </div>
                         </div>
@@ -164,7 +165,7 @@
                                     <label class="form-label">Account Number</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control"  placeholder="Account Number" value="123456789">
+                                    <input type="text" class="form-control"  placeholder="Account Number" value="" id="account-number">
                                 </div>
                             </div>
                         </div>
@@ -174,7 +175,7 @@
                                     <label class="form-label">Bank Name</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control"  placeholder="Bank Name" value="UBA">
+                                    <input type="text" class="form-control"  placeholder="Bank Name" value="" id="bank-name">
                                 </div>
                             </div>
                         </div>
@@ -194,7 +195,7 @@
                     </form>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary waves-effect waves-light">Update Profile</button>
+                    <button type="submit" class="btn btn-primary waves-effect waves-light" id="btn-x">Update Profile</button>
                 </div>
             </div>
         </div>
@@ -203,6 +204,38 @@
 </div>
 </div>
 <!--Main Content-->
+<script>
+    $(document).ready(function() {
+        $("#btn-x").click(function(e) {
+            var formData = {
+                account_name: $("#account-name").val(),
+                account_number: $("#account-number").val(),
+                bank_name: $('#bank-name').val()
+            }
+            $.ajax({
+                cache: false,
+                type: "POST",
+                url: "../admin/connect/update.php",
+                data: formData,
+                dataType: "json",
+                encode: true,
+            }).done(function (data) {
+
+                //console.log(data);
+                if(data.code == 100){
+                    toastr.success(data.desc)
+                   location.reload()
+                }else{
+                    toastr.warning(data.desc)
+                }
+            }).fail(function (){
+                alert('failed')
+            });
+
+            e.preventDefault();
+        });
+    });
+</script>
 
 
 
